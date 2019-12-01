@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>We sent you a temporary password</h1>
+<p>To log in as {{ address }}, you can go to the URL in the email message or
+paste the temporary password here.</p>
+<form method='GET' action='/email_token_submit'>
+    <input type='text' name='token' />
+    <input type='hidden' name='next' value='{{ return_url }}' />
+    <button type='submit'>Log in</button>
+</form>
+{% endblock %}

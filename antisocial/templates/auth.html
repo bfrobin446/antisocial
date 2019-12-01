@@ -1,0 +1,15 @@
+{% if request.user.is_authenticated %}
+<div>Logged in as {{ request.user.display_name }} | 
+    <form method='POST' action='/logout'>
+        {% csrf_token %}
+        <button type='submit'>Log out</button>
+    </form>
+</div>
+{% else %}
+<form method='POST' action='/login'>
+    {% csrf_token %}
+    <input type='hidden' name='auth_type' value='email' />
+    <input type='hidden' name='return_url' value='{{ request.path }}' />
+    <label>Log in with email: <input type='email' name='email' /></label>
+</form>
+{% endif %}

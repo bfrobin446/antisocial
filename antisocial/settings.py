@@ -25,6 +25,28 @@ SECRET_KEY = '*0g)byl3mqtp24mei2!5js9w91#jb9u%sb^!!gw5-!hx+yz2i3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'with_source': {
+            'format': '{levelname} {asctime} {name}: {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'with_source',
+        },
+    },
+    'root': {
+        'level': 'DEBUG',
+        'handlers': ['console'],
+    },
+}
+
 ALLOWED_HOSTS = []
 
 
@@ -39,7 +61,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_extensions',
+
+    'antisocial',
 ]
+
+AUTH_USER_MODEL = 'antisocial.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,6 +107,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Password validation

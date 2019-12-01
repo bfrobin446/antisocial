@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block auth %}
+    {% include "auth.html" %}
+{% endblock %}
+{% block body %}
+<p>Logged out {{previous_user}}.</p>
+{% endblock %}
