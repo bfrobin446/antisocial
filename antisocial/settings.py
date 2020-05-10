@@ -66,6 +66,7 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'antisocial.User'
+HUMAN_ID_LENGTH = 4
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
