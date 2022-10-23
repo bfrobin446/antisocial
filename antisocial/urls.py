@@ -20,8 +20,8 @@ from . import views
 
 urlpatterns = [
     path('', views.main),
-    path('login', views.login),
-    path('logout', views.logout),
-    path('email_token_submit', views.email_token_submit),
+#    path('login', views.login),
+#    path('logout', views.logout),
+#    path('email_token_submit', views.email_token_submit),
     path('admin/', admin.site.urls),
 ]
