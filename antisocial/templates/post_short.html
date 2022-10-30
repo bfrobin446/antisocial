@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title"> {{ post.title }} </h2>
+    <p class="card-subtitle text-muted">{{ post.timestamp }}</p>
+    <div class="card-text">
+      {% autoescape off %}
+      {{ post.body }}
+      {% endautoescape %}
+    </div>
+  </div>
+</div>

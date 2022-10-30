@@ -1,7 +1,21 @@
 {% extends "base.html" %}
-{% block auth %}
-    {% include "auth.html" %}
+{% block navbar_contents %}
+{% include "nav_shared.html" %}
 {% endblock %}
 {% block body %}
-<h1>Hello, world!</h1>
+<div class="container-lg">
+  <div class="row align-items-center">
+    <div class="col-2">
+      <img src="/branding/profile_pic" alt="{{ profile_pic_alt }}" class="img-fluid rounded" />
+    </div>
+    <div class="col">
+      <h1>{{ blog_title }}</h1>
+      <p class="text_muted">{{ blog_elevator_description }}</p>
+    </div>
+  </div>
+</div>
+<div class="container-lg">
+  {% for post in latest_posts %}
+    {% include "post_short.html" with post=post only %}
+  {% endfor %}
 {% endblock %}
