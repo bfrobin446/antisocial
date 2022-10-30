@@ -10,6 +10,7 @@ django = "*"
 ipython = "*"
 django-extensions = "*"
 markdown = "*"
+daphne = "*"
 
 [requires]
 python_version = "3"
