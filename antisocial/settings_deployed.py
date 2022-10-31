@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+from . import aws_glue
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-syu64%j83x9sb6a#g@kur04-=tc-&(m+2%(jo=9*rwfksk*vmh'
+SECRET_KEY = aws_glue.get_secret("blog/django-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -76,8 +78,11 @@ WSGI_APPLICATION = 'antisocial.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': "blog-db.cxxryoosurok.us-east-2.rds.amazonaws.com"
+        'NAME': "antisocial",
+        'USER': "postgres",
+        'PASSWORD': aws_glue.get_secret("blog/master-postgres"),
     }
 }
 
@@ -116,7 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'https://static.brobinson.name/blog/'
 STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
