@@ -14,15 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import include, path
-from django.views.generic.base import RedirectView
 
 from . import views
 
 
 branding_urls = [
-    path('profile_pic', RedirectView.as_view(url=staticfiles_storage.url('profile.jpg'), permanent=True)),
+    path('profile_pic', views.ProfilePic.as_view()),
 ]
 
 urlpatterns = [

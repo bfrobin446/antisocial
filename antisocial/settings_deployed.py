@@ -22,12 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = aws_glue.get_secret("blog/django-key")
+SECRET_KEY = aws_glue.get_value_from_json_secret("blog/django-key", "secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*.brobinson.name', '.localhost', '127.0.0.1', '[::1]']
+CSRF_TRUSTED_ORIGINS = ["https://*.brobinson.name"]
 
 
 # Application definition
@@ -79,10 +80,10 @@ WSGI_APPLICATION = 'antisocial.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': "blog-db.cxxryoosurok.us-east-2.rds.amazonaws.com"
+        'HOST': "blog-db.cxxryoosurok.us-east-2.rds.amazonaws.com",
         'NAME': "antisocial",
         'USER': "postgres",
-        'PASSWORD': aws_glue.get_secret("blog/master-postgres"),
+        'PASSWORD': aws_glue.get_value_from_json_secret("blog/master-postgres", "password"),
     }
 }
 
