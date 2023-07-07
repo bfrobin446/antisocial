@@ -10,7 +10,9 @@
     <h1>{{ blog_title }}</h1>
     <p class="text-muted">{{ blog_elevator_description }}</p>
   </div>
-  {% for post in latest_posts %}
-    {% include "post_short.html" with post=post only %}
-  {% endfor %}
+  <div class="content">
+    {% for post in latest_posts %}
+      {% include "post_short.html" with post=post only %}
+    {% endfor %}
+  </div>
 {% endblock %}

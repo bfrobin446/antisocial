@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body %}
+  <div class="title-text">
+    <h1>{{ post.title }}</h1>
+    <p class="text-muted">{{ post.save_time }}</p>
+  </div>
+  <div class="content">
+    {% autoescape off %}
+    {{ html_body }}
+    {% endautoescape %}
+  </div>
+{% endblock %}

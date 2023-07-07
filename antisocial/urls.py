@@ -25,6 +25,7 @@ branding_urls = [
 
 urlpatterns = [
     path('', views.HomePage.as_view()),
+    path('posts/<pk>', views.SinglePost.as_view()),
     path('branding/', include(branding_urls)),
     path('admin/', admin.site.urls),
 ]

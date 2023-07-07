@@ -3,14 +3,8 @@ import markdown
 from .models import Post
 
 
-def render_post(post: Post):
-    html_body = markdown.markdown(post.body)
-    return {
-        "title": post.title,
-        "body": html_body,
-        "timestamp": post.save_time,
-        "tags": post.tags,
-    }
+def render_post_body(post: Post):
+    return markdown.markdown(post.body)
 
 
 def render_post_preview(post: Post):
@@ -21,5 +15,6 @@ def render_post_preview(post: Post):
         "body": html_body,
         "timestamp": post.save_time,
         "tags": post.tags,
+        "id": post.id,
     }
 

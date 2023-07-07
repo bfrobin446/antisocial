@@ -20,6 +20,9 @@
   <body>
     <div class="navbar-wrapper">
       {% block navbar_contents %}
+      <a href="/">
+        <img src="/branding/profile_pic" alt="{{ profile_pic_alt }}" />
+      </a>
       <a class="navbar-brand" href="/">{{ blog_title }}</a>
       {% include "nav_shared.html" %}
       {% endblock %}
